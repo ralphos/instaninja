@@ -173,7 +173,7 @@ DEPENDENCIES
   awesome_print
   coffee-rails (~> 4.0.0)
   dotenv-rails
-  exception_notification (~> 4.0.1)
+  exception_notification
   haml (~> 4.0.4)
   haml-rails (~> 0.5.1)
   high_voltage (~> 2.0.0)

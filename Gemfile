@@ -15,7 +15,7 @@ gem 'unicorn', '~> 4.7.0'
 gem 'haml', '~> 4.0.4'
 gem 'instagram', '~> 0.10.0'
 gem 'dotenv-rails'
-gem 'exception_notification', '~> 4.0.1'
+gem 'exception_notification'
 
 group :doc do
   gem 'sdoc', require: false
