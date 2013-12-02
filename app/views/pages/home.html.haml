@@ -1,3 +1,4 @@
 %h1 Instaninja
 
-= link_to 'Hashtags', hashtags_path
+- if current_user
+  = link_to 'Hashtags', hashtags_path

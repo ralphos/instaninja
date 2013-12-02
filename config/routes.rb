@@ -6,7 +6,9 @@ Instaninja::Application.routes.draw do
   get '/auth/instagram/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: :sign_out
 
-  resources :hashtags, only: [:index, :create, :destroy]
+  delete '/hashtag/:id', to: 'hashtags#destroy', as: :destroy_hashtag
+
+  resources :hashtags, only: [:index, :create]
   resources :users, only: [:update]
   resources :likes, only: [:create]
 end
