@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :hashtags
+  has_many :hashtags, dependent: :destroy
 
   def self.find_or_create_with_omniauth(auth_hash)
      where(auth_hash.slice('provider', 'uid')).first || create! do |auth|
