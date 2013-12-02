@@ -41,6 +41,9 @@ GEM
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
@@ -170,6 +173,7 @@ DEPENDENCIES
   awesome_print
   coffee-rails (~> 4.0.0)
   dotenv-rails
+  exception_notification (~> 4.0.1)
   haml (~> 4.0.4)
   haml-rails (~> 0.5.1)
   high_voltage (~> 2.0.0)
