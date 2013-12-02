@@ -14,3 +14,29 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore database.yml
+/config/database.yml
+
+# # Ignore DS_Store
+/app/assets/images/.DS_Store
+/app/assets/.DS_Store
+**.DS_Store
+
+# Ignore public/
+/public/systems
+/public/assets
+
+# Ignore vendor directory, except assets directory
+/vendor/bin/
+/vendor/build_info/
+/vendor/cache/
+/vendor/doc/
+/vendor/gems/
+/vendor/specifications/
+
+# Ignore local variables in .env
+.env
+
+# Ignore public/system
+/public/system/
