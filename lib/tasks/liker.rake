@@ -6,8 +6,9 @@ task :like_on_instagram => [:environment, :dotenv] do
   puts "Liking all tagged photos on Instagram..."
   begin
     liker.like_all_tagged_media
-  rescue
-    puts "Something went wrong"
+  rescue => e
+    puts "Something went wrong: #{e}"
+    Mailer.error_notification(e).deliver
   end
   puts "Done."
 end

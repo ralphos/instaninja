@@ -7,7 +7,9 @@ class InstagramLiker
 
   def like_all_tagged_media
     get_all_tagged_media_ids.each do |tm|
-      tm.each { |id| like_media(id) }
+      tm.each do |id|
+        like_media(id)
+      end
     end
   end
 
