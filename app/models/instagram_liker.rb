@@ -1,5 +1,6 @@
 class InstagramLiker
   def initialize(user)
+    @number_of_photos = user.likes_per_hashtag
     @hashtags = user.hashtags_to_like
     @client = Instagram.client(access_token: user.token)
   end
@@ -15,7 +16,7 @@ class InstagramLiker
   end
 
   def tagged_media(hashtag)
-    @client.tag_recent_media(hashtag, count: 1)
+    @client.tag_recent_media(hashtag, count: @number_of_photos)
   end
 
   def tagged_media_ids(hashtag)
