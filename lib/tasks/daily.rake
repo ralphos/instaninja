@@ -6,6 +6,7 @@ namespace :daily do
         user.user_likes.each do |ul|
           puts "Liking #{ul.username}'s last photo..."
           ul.like_last_photo
+          sleep(rand(1..5))
           puts "Liked."
         end
       end
