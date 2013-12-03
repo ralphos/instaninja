@@ -12,7 +12,7 @@
   - @hashtags.each do |tag|
     %li
       = tag.name
-      = link_to 'x', hashtag_path(tag), method: :delete
+      = link_to 'x', destroy_hashtag_path(tag), method: :delete
 
 = form_for @hashtag do |form|
   = form.text_field :name
