@@ -11,7 +11,7 @@ class InstagramLiker
         count += 1
         puts "Request count: #{count}"
         like_media(id)
-        sleep(rand(1..5))
+        sleep(rand(1..10))
       end
     end
   end
