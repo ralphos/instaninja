@@ -8,6 +8,8 @@
   %body
 
   - if current_user
+    = link_to 'Hashtags', hashtags_path
+    = link_to 'Users', user_likes_path
     = "Hi " + current_user.full_name
     = link_to 'Sign out', sign_out_path
   - else

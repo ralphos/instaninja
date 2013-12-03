@@ -1,22 +1,15 @@
 %h1 Hashtags
 
-%p
-  How many likes would you like per Hashtag?
-  %em (Instagram API requests limit likes to 300 per/hr)
-
-= form_for @user do |form|
-  = form.number_field :likes_per_hashtag
-  = form.submit 'Update'
-
 %ul
-  - @hashtags.each do |tag|
+  - @hashtags.each do |hashtag|
     %li
-      = tag.name
-      = link_to 'x', destroy_hashtag_path(tag), method: :delete
+      = hashtag.name
+      = link_to 'x', destroy_hashtag_path(hashtag), method: :delete
 
-= form_for @hashtag do |form|
-  = form.text_field :name
-  = form.submit 'Add'
+- if @hashtags.count < 3
+  = form_for @hashtag do |form|
+    = form.text_field :name
+    = form.submit 'Add'
 
 - if current_user.hashtags.any? && !current_user.likes_per_hashtag.nil?
   = button_to 'Like photos on Instagram', likes_path
