@@ -6,8 +6,11 @@ class InstagramLiker
   end
 
   def like_all_tagged_media
+    count = 0
     get_all_tagged_media_ids.each do |tm|
       tm.each do |id|
+        count += 1
+        puts "Request count: #{count}"
         like_media(id)
       end
     end
