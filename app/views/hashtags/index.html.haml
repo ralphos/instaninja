@@ -4,7 +4,7 @@
   - @hashtags.each do |hashtag|
     %li
       = hashtag.name
-      = link_to 'x', destroy_hashtag_path(hashtag), method: :delete
+      = button_to 'x', destroy_hashtag_path(hashtag), :method => :delete
 
 - if @hashtags.count < 3
   = form_for @hashtag do |form|
