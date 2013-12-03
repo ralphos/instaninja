@@ -5,7 +5,7 @@
     %li
       = image_tag user.profile_picture
       = user.username
-      = link_to 'x', user_like_path(user), method: :delete
+      = button_to 'x', user_like_path(user), :method => :delete
 
 - if @user_likes.count < 10
   = form_for @user_like do |form|
