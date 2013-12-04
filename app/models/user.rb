@@ -13,6 +13,27 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.active
+    where(deactivate_instagram: nil)
+  end
+
+  def self.inactive
+    where("deactivate_instagram is NOT NULL")
+  end
+
+  def should_be_active?
+    Time.zone.now > activation_time
+  end
+
+  def activate!
+    self.deactivate_instagram = nil
+    self.save
+  end
+
+  def activation_time
+    self.deactivate_instagram.tomorrow.to_date.to_time
+  end
+
   def hashtags_to_like
     hashtags.map(&:name)
   end

@@ -1,11 +1,12 @@
 class Mailer < ActionMailer::Base
-  default from: %{"InstaNinja" <wintle.ralph@gmail.com>}
+  default from: %{"InstaNinja" <info@pinchthelook.com>}
 
-  def error_notification(error)
+  def error_notification(error, deactivation_time)
     @error = error
+    @time = deactivation_time
 
     mail(
-      to: "wintle.ralph@gmail.com",
+      to: "info@pinchthelook.com",
       subject: "Something went wrong"
     )
   end
