@@ -24,6 +24,7 @@ class InstagramLiker
 
   def get_users_last_photo(instagram_id)
     @client.user_recent_media(instagram_id, count: 1).first
+    # check if user_has_liked isn't false
   end
 
   def tagged_media(hashtag)

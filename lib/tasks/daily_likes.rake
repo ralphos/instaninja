@@ -1,18 +1,22 @@
-namespace :daily do
+namespace :daily_likes do
   desc "Like influential Instagrammer's latest photo once a day"
   task :like_users_photo => [:environment, :dotenv] do
     begin
-      User.all.each do |user|
+      User.active.each do |user|
         user.user_likes.each do |ul|
           puts "Liking #{ul.username}'s last photo..."
           ul.like_last_photo
-          sleep(rand(1..5))
+          sleep(rand(1..15))
           puts "Liked."
         end
       end
       puts "Task Completed."
     rescue => e
       puts "Something went wrong: #{e}"
+
+      # If it fails deactivate all users
+      User.update_all(deactivate_instagram: Time.zone.now)
+
       Mailer.error_notification(e).deliver
     end
   end

@@ -10,6 +10,7 @@ Instaninja::Application.routes.draw do
 
   resources :hashtags, only: [:index, :create]
   resources :users, only: [:update]
+  resources :user_commenters, only: [:index, :create, :destroy]
   resources :user_likes, only: [:index, :create, :destroy]
   resources :likes, only: [:create]
 end

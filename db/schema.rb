@@ -11,14 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204034009) do
+ActiveRecord::Schema.define(version: 20131204115339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "follows", force: true do |t|
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "hashtags", force: true do |t|
     t.string   "name"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_commenters", force: true do |t|
+    t.string   "username"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.string   "profile_picture"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

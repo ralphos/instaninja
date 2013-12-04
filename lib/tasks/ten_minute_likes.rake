@@ -1,4 +1,4 @@
-namespace :ten_minutes do
+namespace :ten_minute_likes do
   desc "Like photos based on user's hashtags every 10 minutes"
   task :like_on_instagram => [:environment, :dotenv] do
     begin
