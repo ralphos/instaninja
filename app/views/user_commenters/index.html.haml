@@ -7,7 +7,7 @@
       = user.username
       = button_to 'x', user_commenter_path(user), :method => :delete
 
-- if @user_commenters.count < 10
+- if @user_commenters.count < 5
   = form_for @user_commenter do |form|
     = form.text_field :username
     = form.submit 'Add'

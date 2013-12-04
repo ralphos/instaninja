@@ -6,7 +6,7 @@
       = hashtag.name
       = button_to 'x', destroy_hashtag_path(hashtag), :method => :delete
 
-- if @hashtags.count < 3
+- if @hashtags.count < 5
   = form_for @hashtag do |form|
     = form.text_field :name
     = form.submit 'Add'
