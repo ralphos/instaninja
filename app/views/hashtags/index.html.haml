@@ -1,5 +1,6 @@
-%h1 Hashtags
+%h1 Like Tagged Photos
 %p Pick up to 5 hashtags. InstaNinja will like the latest photo from each hashtag every hour.
+%em The more likes you give the more likes and followers you are likely to receive in return.
 
 %ul
   - @hashtags.each do |hashtag|
@@ -11,6 +12,3 @@
   = form_for @hashtag do |form|
     = form.text_field :name
     = form.submit 'Add'
-
-- if current_user.hashtags.any? && !current_user.likes_per_hashtag.nil?
-  = button_to 'Like photos on Instagram', likes_path
