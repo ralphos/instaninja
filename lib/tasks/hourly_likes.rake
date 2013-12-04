@@ -1,6 +1,6 @@
-namespace :ten_minute_likes do
-  desc "Like photos based on user's hashtags every 10 minutes"
-  task :like_on_instagram => [:environment, :dotenv] do
+namespace :hourly_likes do
+  desc "Like photos based on user's hashtags every hour"
+  task :hashtag_likes => [:environment, :dotenv] do
     begin
 
       # Check whether we should activate inactive users

@@ -11,6 +11,11 @@ class UserLike < ActiveRecord::Base
   def like_last_photo
     liker = InstagramLiker.new(self.user)
     photo = liker.get_users_last_photo(self.uid)
-    liker.like_media(photo['id'])
+    if photo['user_has_liked'] == false
+      liker.like_media(photo['id'])
+      puts "Liked"
+    else
+      puts "No likey"
+    end
   end
 end

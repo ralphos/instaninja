@@ -6,20 +6,24 @@ class InstagramLiker
 
   def like_random_tagged_media
     random_media = get_random_media_sample
-    random_media.each do |id|
-      puts "Request number: #{random_media.index(id) + 1}"
-      like_media(id)
-      sleep(rand(1..20))
+    random_media.each do |photo|
+      if photo['user_has_liked'] == false
+        like_media(photo['id'])
+        sleep(rand(1..20))
+        puts "Liked"
+      else
+        puts "No likey"
+      end
     end
   end
 
   def get_random_media_sample
-    media = get_all_tagged_media_ids
-    media.sample(rand(0..media.count))
+    media = get_all_tagged_media
+    media.sample(rand(1..media.count))
   end
 
-  def get_all_tagged_media_ids
-    @hashtags.map { |tag| tagged_media_ids(tag) }.flatten
+  def get_all_tagged_media
+    @hashtags.map { |tag| tagged_media(tag) }
   end
 
   def get_users_last_photo(instagram_id)
@@ -28,11 +32,7 @@ class InstagramLiker
   end
 
   def tagged_media(hashtag)
-    @client.tag_recent_media(hashtag, count: 1)
-  end
-
-  def tagged_media_ids(hashtag)
-    tagged_media(hashtag).map(&:id)
+    @client.tag_recent_media(hashtag, count: 1).first
   end
 
   def like_media(id)

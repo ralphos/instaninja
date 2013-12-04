@@ -7,7 +7,6 @@ namespace :daily_likes do
           puts "Liking #{ul.username}'s last photo..."
           ul.like_last_photo
           sleep(rand(1..15))
-          puts "Liked."
         end
       end
       puts "Task Completed."
