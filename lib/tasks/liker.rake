@@ -12,12 +12,13 @@ namespace :ten_minutes do
       User.active.each do |user|
         @liker = InstagramLiker.new(user)
         puts "Liking #{user.full_name}'s photos on Instagram..."
-        @liker.like_all_tagged_media
+        @liker.like_random_tagged_media
       end
     rescue => e
+
       puts "Something went wrong: #{e}"
 
-      # If it fails deactivate user
+      # If it fails deactivate all users
       User.update_all(deactivate_instagram: Time.zone.now)
 
       # Email error and time of deactivation
