@@ -1,6 +1,6 @@
 Instaninja::Application.routes.draw do
-  get '/home', to: redirect('/')
-  root :to => 'high_voltage/pages#show', id: 'home'
+  #get '/home', to: redirect('/')
+  root :to => 'pages#show', id: 'home'
 
   get '/auth/instagram', as: :authenticate_instagram
   get '/auth/instagram/callback', to: 'sessions#create'
