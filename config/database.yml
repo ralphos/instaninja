@@ -51,14 +51,6 @@ test:
   username: ralphwintle
   password:
 
-staging::
-  adapter: postgresql
-  encoding: unicode
-  database: instaninja_staging
-  pool: 5
-  username: ralphwintle
-  password:
-
 production:
   adapter: postgresql
   encoding: unicode
