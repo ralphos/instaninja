@@ -1,5 +1,4 @@
 Instaninja::Application.routes.draw do
-  #get '/home', to: redirect('/')
   root :to => 'pages#show', id: 'home'
 
   get '/auth/instagram', as: :authenticate_instagram
