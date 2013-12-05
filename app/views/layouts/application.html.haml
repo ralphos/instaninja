@@ -1,19 +1,15 @@
 !!!
 %html
   %head
+    %link{:href => "http://fonts.googleapis.com/css?family=Lato:300,400,700|Ubuntu:300,400&subset=latin,latin-ext", :rel => "stylesheet", :type => "text/css"}
     %title Instaninja
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-
-  - if current_user
-    = link_to 'Hashtags', hashtags_path
-    = link_to 'Users', user_likes_path
-    = link_to 'Commenters', user_commenters_path
-    = "Hi " + current_user.full_name
-    = link_to 'Sign out', sign_out_path
-  - else
-    = link_to 'Connect Instagram', authenticate_instagram_path
-
-  = yield
+  = render 'application/navbar'
+  .container
+    %section.main
+      = yield
+    %footer
+      © InstaNinja 2013

@@ -16,6 +16,7 @@ gem 'haml', '~> 4.0.4'
 gem 'instagram', '~> 0.10.0'
 gem 'dotenv-rails'
 gem 'exception_notification'
+gem 'font-awesome-rails'
 
 group :doc do
   gem 'sdoc', require: false

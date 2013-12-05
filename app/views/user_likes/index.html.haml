@@ -1,15 +1,29 @@
-%h1 Like Users' Photos
-%p Choose up to 10 Instagrammers you would like to target. InstaNinja will like their latest photo once a day.
-%em By liking a specific users' photos, you're more likely to get a follow in return.
+#user-likes
+  %header.pages
+    .media
+      = link_to (image_tag 'person.png', height: 40), '#', class: 'pull-left'
+      .media-body
+        %h2 Like a Users' Photos
+    %p
+      %strong Choose up to 10 users you would like to target.
+      InstaNinja will like their photos once a day.
 
-%ul
-  - @user_likes.each do |user|
-    %li
-      = image_tag user.profile_picture
-      = user.username
-      = button_to 'x', user_like_path(user), :method => :delete
-
-- if @user_likes.count < 10
-  = form_for @user_like do |form|
-    = form.text_field :username
-    = form.submit 'Add'
+  %section.page-content
+    %ul
+      - @user_likes.each do |user|
+        %li
+          = button_to user_like_path(user), :method => :delete, class: 'remove-user btn btn-danger btn-sm pull-right' do
+            %span.glyphicon.glyphicon-remove
+          = image_tag user.profile_picture
+          = '@' + user.username
+    .add
+      - if @user_likes.count < 10
+        = form_for @user_like, class: 'form-inline' do |form|
+          .form-group
+            = form.label :username, class: 'sr-only'
+            = form.text_field :username, class: 'form-control'
+          = form.submit 'Add', class: 'btn btn-primary'
+      %p
+        %em Tip: By liking a specific users' photos, you're more likely to get a follow in return.
+    - if current_user.inactive?
+      = render 'application/inactive_message'

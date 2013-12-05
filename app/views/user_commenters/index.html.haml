@@ -1,15 +1,30 @@
-%h1 Follow Commenters
-%p Pick 5 popular Instagrammers. InstaNinja will follow the last commenter on their latest photo each day.
-%em Following a commenter for a specific user is a great way to target Instagrammers in your niche.
+#user-commenters
+  %header.pages
+    .media
+      = link_to (image_tag 'comment.png', height: 40), '#', class: 'pull-left'
+      .media-body
+        %h2 Follow Commenters
+    %p
+      %strong Pick 5 popular Instagrammers.
+      InstaNinja will follow the last commenter on their account each day.
 
-%ul
-  - @user_commenters.each do |user|
-    %li
-      = image_tag user.profile_picture
-      = user.username
-      = button_to 'x', user_commenter_path(user), :method => :delete
+  %section.page-content
+    %ul
+      - @user_commenters.each do |user|
+        %li
+          = button_to user_commenter_path(user), :method => :delete, class: 'remove-user btn btn-danger btn-sm pull-right' do
+            %span.glyphicon.glyphicon-remove
+          = image_tag user.profile_picture
+          = '@' + user.username
 
-- if @user_commenters.count < 5
-  = form_for @user_commenter do |form|
-    = form.text_field :username
-    = form.submit 'Add'
+    .add
+      - if @user_commenters.count < 5
+        = form_for @user_commenter, class: 'form-inline' do |form|
+          .form-group
+            = form.label :username, class: 'sr-only'
+            = form.text_field :username, class: 'form-control'
+          = form.submit 'Add', class: 'btn btn-primary'
+      %p
+        %em Tip: Following a commenter for a specific user is a great way to target Instagrammers in your niche.
+    - if current_user.inactive?
+      = render 'application/inactive_message'

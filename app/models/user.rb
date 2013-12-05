@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     where("deactivate_instagram is NOT NULL")
   end
 
+  def inactive?
+    !deactivate_instagram.nil?
+  end
+
   def should_be_active?
     Time.zone.now > activation_time
   end

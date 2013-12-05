@@ -1,14 +1,29 @@
-%h1 Like Tagged Photos
-%p Pick up to 5 hashtags. InstaNinja will like the latest photo from each hashtag every hour.
-%em The more likes you give the more likes and followers you are likely to receive in return.
+#hashtags
+  %header.pages
+    .media
+      = link_to (image_tag 'like.png', height: 40), '#', class: 'pull-left'
+      .media-body
+        %h2 Like Tagged Photos
+    %p
+      %strong Pick up to 5 hashtags.
+      InstaNinja will like the latest photo from each hashtag every hour.
 
-%ul
-  - @hashtags.each do |hashtag|
-    %li
-      = hashtag.name
-      = button_to 'x', destroy_hashtag_path(hashtag), :method => :delete
+  %section.page-content
+    %ul
+      - @hashtags.each do |hashtag|
+        %li
+          = button_to destroy_hashtag_path(hashtag), :method => :delete, class: 'btn btn-danger btn-sm pull-right' do
+            %span.glyphicon.glyphicon-remove
+          = '#' + hashtag.name
 
-- if @hashtags.count < 5
-  = form_for @hashtag do |form|
-    = form.text_field :name
-    = form.submit 'Add'
+    .add
+      - if @hashtags.count < 5
+        = form_for @hashtag, class: 'form-inline' do |form|
+          .form-group
+            = form.label :name, class: 'sr-only'
+            = form.text_field :name, class: 'form-control'
+          = form.submit 'Add', class: 'btn btn-primary'
+        %p
+          %em Tip: The more likes you give the more likes and followers you are likely to receive in return.
+    - if current_user.inactive?
+      = render 'application/inactive_message'
