@@ -10,9 +10,11 @@ namespace :hourly_likes do
 
       # Like photos for all active users
       User.active.each do |user|
-        @liker = InstagramLiker.new(user)
-        puts "Liking #{user.full_name}'s photos on Instagram..."
-        @liker.like_random_tagged_media
+        if user.hashtags_to_like.any?
+          @liker = InstagramLiker.new(user)
+          puts "Liking #{user.full_name}'s photos on Instagram..."
+          @liker.like_random_tagged_media
+        end
       end
     rescue => e
 

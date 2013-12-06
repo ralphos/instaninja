@@ -3,11 +3,13 @@ namespace :daily_follows do
   task :follow_commenter => [:environment, :dotenv] do
     begin
       User.active.each do |user|
-        ig_follower = InstagramFollower.new(user)
-        user.user_commenters.each do |uc|
-          puts "Following #{uc.username}'s last commenter..."
-          ig_follower.follow_last_photo_commenter(uc.uid)
-          puts "Followed."
+        if user.user_commenters.any?
+          ig_follower = InstagramFollower.new(user)
+          user.user_commenters.each do |uc|
+            puts "Following #{uc.username}'s last commenter..."
+            ig_follower.follow_last_photo_commenter(uc.uid)
+            puts "Followed."
+          end
         end
       end
       puts "Task Completed."

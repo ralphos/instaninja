@@ -3,11 +3,13 @@ namespace :daily_unfollows do
   task :unfollow_commenter => [:environment, :dotenv] do
     begin
       User.active.each do |user|
-        ig_follower = InstagramFollower.new(user)
-        user.follows.each do |f|
-          if (Time.zone.now - f.created_at) > 1.week
-            puts "Unfollowing any follows over a week old"
-            ig_follower.unfollow_user(f.uid)
+        if user.follows.any?
+          ig_follower = InstagramFollower.new(user)
+          user.follows.each do |f|
+            if (Time.zone.now - f.created_at) > 1.week
+              puts "Unfollowing any follows over a week old"
+              ig_follower.unfollow_user(f.uid)
+            end
           end
         end
         puts "Task Completed."
