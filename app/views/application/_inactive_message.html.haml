@@ -1,8 +1,8 @@
 .inactive
   %p
-    It looks like you've hit your Instagram API request limit!
+    It looks like our Instagram API request limit has been reached!
   %p
-    Your account was deactivated at
+    We've deactivated your account at
     %span
       = current_user.deactivate_instagram.strftime("%H:%M on %B %-d %Y.")
-    We'll reactivate your account at midnight (UTC) when Instagram resets their rate limits.
+    Don't worry, we'll reactivate it at midnight (UTC) when Instagram resets their rate limits.
