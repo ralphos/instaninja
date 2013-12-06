@@ -22,7 +22,7 @@
         = form_for @user_commenter, class: 'form-inline' do |form|
           .form-group
             = form.label :username, class: 'sr-only'
-            = form.text_field :username, class: 'form-control'
+            = form.text_field :username, class: 'form-control', placeholder: "Enter an Instagrammer's username - a bad username will not work!"
           = form.submit 'Add', class: 'btn btn-primary'
       %p
         %em Tip: Following a commenter for a specific user is a great way to target Instagrammers in your niche.

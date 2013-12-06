@@ -21,7 +21,7 @@
         = form_for @user_like, class: 'form-inline' do |form|
           .form-group
             = form.label :username, class: 'sr-only'
-            = form.text_field :username, class: 'form-control'
+            = form.text_field :username, class: 'form-control', placeholder: "Enter an Instagrammer's username - make sure you get it right!"
           = form.submit 'Add', class: 'btn btn-primary'
       %p
         %em Tip: By liking a specific users' photos, you're more likely to get a follow in return.
