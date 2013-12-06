@@ -31,7 +31,15 @@ h3 {
 h4 {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  text-transform: uppercase;
+  //text-transform: uppercase;
+}
+
+p {
+  color: #767c8d;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
 
 section.main {
@@ -199,6 +207,7 @@ header.pages {
   }
 
   p {
+    color: #fff;
     font-size: 16px;
     line-height: 22px;
     margin-bottom: 0;
